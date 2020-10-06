@@ -41,6 +41,7 @@ public class main {
 		//MIRAR QUE WEBORRIS REDIRECCIONA UNA PAGINA
 		ArrayList<String> e=web.irteerakoEstekak("0-00.pl");
 		
+		/*
 		Iterator<String> itr=e.iterator();
 		String a;
 		while(itr.hasNext()) {
@@ -48,27 +49,38 @@ public class main {
 			System.out.println(a);
 		}
 		
+		*/
+		System.out.print("el que funciona");
+		
 		//Gako-hitz bat emanda, gako-hitz hau duten web-orrien zerranda bueltatu FALLAAAAA
 		Gakoa g=new Gakoa("chat");
 		
 		ArrayList<String> o=NireWebOrriak.word2Webs(g.getIzena());
 		
+		/*
 		Iterator<String> itra=o.iterator();
 		String j;
 		while(itr.hasNext()) {
 			j=itra.next();
 			System.out.println(j);
 		}
+		*/
 		
-		
+		System.out.print("el que falla");
 		
 		//METER EN EL DOCUMENTO
+		
+		/*
 		try {
         NireWebOrriak.dokumentuaSortu();
 		}
 		catch (IOException p){
 			p.toString();
 		}
+		*/
+		
+		//ORDENAR EL DOCUMENTO
+		//NireWebOrriak.webOrdenatua();
 		
 		System.out.print("Dena ondo");
 	}
