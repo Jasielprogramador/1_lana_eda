@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 
 
 
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -98,8 +99,8 @@ public class WebOrriak {
 	}
 	
 	public void webOrriKendu(WebOrria w) {
-		this.map.remove(w);
 		this.lista.remove(w);
+		this.map.remove(w);
 	}
 	
 	//Te da las paginas web que contiene una palabra
@@ -111,6 +112,19 @@ public class WebOrriak {
 			w= itr.next();
 			if(w.gakoWeb(s)) {
 				e.add(w.getUrl());
+			}
+		}
+ 		return e;
+	}
+	
+	public ArrayList<WebOrria> gakoaWebOrriak(String s){
+		ArrayList<WebOrria> e = new ArrayList<WebOrria>();
+		Iterator<WebOrria> itr=this.getIterator();
+		WebOrria w;
+		while(itr.hasNext()) {
+			w= itr.next();
+			if(w.gakoWeb(s)) {
+				e.add((w));
 			}
 		}
 		return e;
@@ -179,7 +193,7 @@ public class WebOrriak {
 	}
 	
 	//Para escribir la lista de urls en un txt
-	private void dokumentuaSortu() throws IOException {
+	public void dokumentuaSortu() throws IOException {
         FileWriter writer = new FileWriter("url_lista.txt");
         int size = this.getUrlLista().size();
         for (int i=0;i<size;i++) {
@@ -250,9 +264,6 @@ public class WebOrriak {
     	}
          
 	}
-	 
-	public static void main(String[] args) {
-		
-	}
-
+	
+	
 }

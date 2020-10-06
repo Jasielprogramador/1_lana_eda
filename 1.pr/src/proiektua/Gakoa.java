@@ -32,6 +32,10 @@ public class Gakoa {
 		return this.izena;
 	}
 	
+	public void kargatuLista() {
+		WebOrriak.getNireWebOrriak().gakoaWebOrriak(this.izena);
+	}
+	
 	
 	
 	
