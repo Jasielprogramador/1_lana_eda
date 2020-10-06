@@ -12,14 +12,13 @@ public class main {
 		
 		NireWebOrriak.ListaKargatu();
 		
-		System.out.print("pene");
-		
 		Gakoak gakoak=new Gakoak();
 		
 		gakoak.listaKargatu();
+		
+		System.out.print("Dena ondo");
         
 		int i =0;
-		
 		
 	}
 
