@@ -31,7 +31,7 @@ public class main {
 		NireWebOrriak.webOrriTxertatu(weba);
 		System.out.println(NireWebOrriak.getWebOrria("aaaaa").getUrl());
 		
-		//QUITAR UNA WEBORRIA FAAAALLLAAAAA
+		//QUITAR UNA WEBORRIA 
 		NireWebOrriak.webOrriKendu(weba);
 		
 		if(NireWebOrriak.getWebOrria("aaaaa")==null) {
@@ -48,36 +48,26 @@ public class main {
 			
 		}
 		
-		/*
-		Iterator<String> itr=e.iterator();
-		String a;
-		while(itr.hasNext()) {
-			a=itr.next();
-			System.out.println(a);
-		}
+		System.out.print("WORD2WEBS");
 		
-		*/
-		System.out.print("el que funciona");
-		
-		//Gako-hitz bat emanda, gako-hitz hau duten web-orrien zerranda bueltatu FALLAAAAA
+		//Gako-hitz bat emanda, gako-hitz hau duten web-orrien zerranda bueltatu 
 		Gakoa g=new Gakoa("chat");
 		
 		ArrayList<String> o=NireWebOrriak.word2Webs(g.getIzena());
 		
-		/*
-		Iterator<String> itra=o.iterator();
-		String j;
-		while(itr.hasNext()) {
-			j=itra.next();
-			System.out.println(j);
+		for(int i=0;i<e.size();i++) {
+			
+			System.out.println(o.get(i));
+			
 		}
-		*/
 		
-		System.out.print("el que falla");
+		
 		
 		//METER EN EL DOCUMENTO
 		
 		/*
+		System.out.println("Dokumentuan sartu");
+		
 		try {
         NireWebOrriak.dokumentuaSortu();
 		}
@@ -86,8 +76,15 @@ public class main {
 		}
 		*/
 		
+		
 		//ORDENAR EL DOCUMENTO
-		//NireWebOrriak.webOrdenatua();
+		NireWebOrriak.webOrdenatua();
+		
+		for(int i=0;i<e.size();i++) {
+			
+			System.out.println(NireWebOrriak.getUrlLista().get(i));
+			
+		}
 		
 		System.out.print("Dena ondo");
 	}

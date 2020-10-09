@@ -100,7 +100,7 @@ public class WebOrriak {
 	
 	public void webOrriKendu(WebOrria w) {
 		this.lista.remove(w);
-		this.map.remove(w);
+		this.map.remove(w.getUrl());
 	}
 	
 	//Te da las paginas web que contiene una palabra
@@ -197,7 +197,7 @@ public class WebOrriak {
         FileWriter writer = new FileWriter("url_lista.txt");
         int size = this.getUrlLista().size();
         for (int i=0;i<size;i++) {
-            String str = this.getUrlLista().get(i).toString();
+            String str = this.getUrlLista().get(i);
             writer.write(str);
             if(i < size-1)//This prevent creating a blank like at the end of the file**
                 writer.write("\n");
