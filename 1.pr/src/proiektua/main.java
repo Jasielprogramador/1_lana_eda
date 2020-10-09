@@ -41,6 +41,13 @@ public class main {
 		//MIRAR QUE WEBORRIS REDIRECCIONA UNA PAGINA
 		ArrayList<String> e=web.irteerakoEstekak("0-00.pl");
 		
+		
+		for(int i=0;i<e.size();i++) {
+			
+			System.out.println(e.get(i));
+			
+		}
+		
 		/*
 		Iterator<String> itr=e.iterator();
 		String a;
