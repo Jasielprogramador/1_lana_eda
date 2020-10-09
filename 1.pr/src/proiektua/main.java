@@ -61,22 +61,6 @@ public class main {
 			
 		}
 		
-		
-		
-		//METER EN EL DOCUMENTO
-		
-		/*
-		System.out.println("Dokumentuan sartu");
-		
-		try {
-        NireWebOrriak.dokumentuaSortu();
-		}
-		catch (IOException p){
-			p.toString();
-		}
-		*/
-		
-		
 		//ORDENAR EL DOCUMENTO
 		NireWebOrriak.webOrdenatua();
 		
@@ -85,6 +69,19 @@ public class main {
 			System.out.println(NireWebOrriak.getUrlLista().get(i));
 			
 		}
+		
+		//METER EN EL DOCUMENTO
+		
+		System.out.println("Dokumentuan sartu");
+		
+		try {
+        NireWebOrriak.dokumentuaSortu();
+		}
+		catch (IOException p){
+			p.toString();
+		}
+		
+		
 		
 		System.out.print("Dena ondo");
 	}
