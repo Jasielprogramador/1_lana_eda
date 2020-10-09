@@ -103,6 +103,10 @@ public class WebOrriak {
 		this.map.remove(w.getUrl());
 	}
 	
+	public int luzeera() {
+		return this.lista.size();
+	}
+	
 	//Te da las paginas web que contiene una palabra
 	public ArrayList<String> word2Webs(String s){
 		ArrayList<String> e = new ArrayList<String>();

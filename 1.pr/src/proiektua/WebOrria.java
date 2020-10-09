@@ -54,9 +54,9 @@ public class WebOrria {
 	}
 	
 	//Te da las paginas a las que se redirecciona una pagina
-	public ArrayList<String> irteerakoEstekak(String s){
+	public ArrayList<String> irteerakoEstekak(){
 		ArrayList<String> e = new ArrayList<String>();		
-		WebOrria nireOrria = WebOrriak.getNireWebOrriak().getWebOrria(s);
+		WebOrria nireOrria = WebOrriak.getNireWebOrriak().getWebOrria(this.getUrl());
 		
 		for (int i=0;i<nireOrria.listaOrriak.size();i++)
 			e.add(nireOrria.listaOrriak.get(i).getUrl());
