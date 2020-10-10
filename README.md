@@ -1,1 +1,3 @@
-mitochondria is the powerhouse of the cell
+1.klase diagrama
+2.conclusiones
+3.calcular tiempos
