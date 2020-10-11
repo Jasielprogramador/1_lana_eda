@@ -26,4 +26,10 @@ public class Teklatua{
 		return zenb;
 	}
 	
+	public String irakurriString()  {
+		Scanner sc= new Scanner(System.in);
+		String text= sc.next();
+		return text;
+	}
+	
 }

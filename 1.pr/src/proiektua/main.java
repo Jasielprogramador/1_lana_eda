@@ -10,7 +10,10 @@ public class main {
 	public static void getWebOrria(WebOrriak webLista,String w) {
 		//CONSEGUIR UNA WEBORRIA
 		WebOrria web=webLista.getWebOrria(w);
-		System.out.println(web.getUrl());
+		if (web == null)
+			System.out.println("Ez dago web orria.");
+		else 
+			System.out.print("Lortutako web orria: "+web.getUrl());
 	}
 	
 	public static void webOrriTxertatu(WebOrriak webLista,WebOrria w) {
@@ -29,15 +32,14 @@ public class main {
 		
 	public static void webOrriKendu(WebOrriak webLista,WebOrria w) {
 		//QUITAR UNA WEBORRIA 
-		if(webLista.getWebOrria(w.getUrl())==null) {
+		if(w== null || webLista.getWebOrria(w.getUrl())==null) {
 			System.out.println("WebOrria ez dago zerrendan");
 		}
 		else {
 			webLista.webOrriKendu(w);
-		}
-		
-		if(webLista.getWebOrria(w.getUrl())==null) {
-			System.out.println("Ezabatuta");
+			if(webLista.getWebOrria(w.getUrl())==null) {
+				System.out.println("Ezabatuta");
+			}
 		}
 	}
 	
@@ -61,7 +63,7 @@ public class main {
 	}
 	
 	
-	public void ordenatu(WebOrriak webLista) {
+	/*public void ordenatu(WebOrriak webLista) {
 		//ORDENAR EL DOCUMENTO
 		webLista.webOrdenatua();
 		ArrayList<String> o=webLista.getUrlLista();
@@ -71,7 +73,7 @@ public class main {
 			System.out.println(webLista.getUrlLista().get(i));
 					
 		}
-	}
+	}*/
 	
 	
 	public static void idatziDokumentuan(WebOrriak webLista) {
@@ -89,7 +91,7 @@ public class main {
 	
 	public static void main(String[] args) {
 		
-		//COMPROBAR QUE TODO SE CARGA BIEN
+		//COMPROBAR QUE TOdO SE CARGA BIEN
 		WebOrriak NireWebOrriak = WebOrriak.getNireWebOrriak();
 		HashMap<String,WebOrria> map = NireWebOrriak.getHashMapFromTextFile();
 		NireWebOrriak.ListaKargatu();
@@ -98,6 +100,7 @@ public class main {
 		boolean irten=false;
 		
 		while (!irten) {
+			System.out.println("0.Irtetzeko");
 			System.out.println("1.WebOrri bat lortu");
 			System.out.println("2.WebOrri bat txertatu");
 			System.out.println("3.WebOrri bat ezabatu");
@@ -112,17 +115,22 @@ public class main {
 		
 		
 			if(zenbakia==1) {
-				System.out.println("Proba, 0-00.pl izeneko web orria sartuko dugu");
-				getWebOrria(NireWebOrriak,"0-00.pl");
+				System.out.println("Zein WebOrri lortu nahi duzu?");
+				String text = teklatua.irakurriString();
+				getWebOrria(NireWebOrriak,text);
+				
 			}
 			else if(zenbakia==2) {
-				System.out.println("Proba, WebOrria(\"aaaaa\",98)-rekin egingo dugu "); 
-				web = new WebOrria("aaaaa",98);
+				System.out.println("Zein Web Orri txertatu nahi duzu?"); 
+				String text = teklatua.irakurriString();
+				web = new WebOrria(text,NireWebOrriak.luzeera());
 				webOrriTxertatu(NireWebOrriak,web);
 			}
 			else if(zenbakia==3) {
-				System.out.println("Proba, WebOrria(0-forex.ru,24)-rekin egingo dugu "); 
-				web=new WebOrria("0-forex.ru",24);
+				System.out.println("Zein WebOrri ezabatu nahi duzu?"); 
+				String text = teklatua.irakurriString();
+				
+				web=NireWebOrriak.getWebOrria(text);
 				webOrriKendu(NireWebOrriak,web);
 			}
 			else if(zenbakia==4) {
@@ -136,13 +144,16 @@ public class main {
 				hitzak(NireWebOrriak,gakoa);
 			}
 			else if(zenbakia==6) {
-			
+				NireWebOrriak.quickSort(NireWebOrriak.getLista(),0,WebOrriak.getNireWebOrriak().luzeera());
+				int i = 0;
 			}
 			else if(zenbakia==7) {
 				System.out.println("Proba, url_lista,txt izeneko dokumentu batekin egin dugu"); 
 				idatziDokumentuan(NireWebOrriak);
 			}
-		
+			else if(zenbakia == 0) {
+				irten = true;
+			}
 		}
 	}
 

@@ -40,6 +40,10 @@ public class WebOrriak {
 		return this.lista.iterator();
 	}
 	
+	public ArrayList<WebOrria> getLista(){
+		return this.lista;
+	}
+	
 	public HashMap<String, WebOrria> getHashMapFromTextFile(){
 	           
 	        try{
@@ -99,12 +103,16 @@ public class WebOrriak {
 	}
 	
 	public void webOrriKendu(WebOrria w) {
-		this.lista.remove(w);
-		this.map.remove(w.getUrl());
+		if (w!=null && this.getWebOrria(w.getUrl()) != null) {
+			this.lista.remove(w);
+			this.map.remove(w.getUrl());
+		}
+		else 
+			System.out.println("Ezin da kendu.");
 	}
 	
 	public int luzeera() {
-		return this.lista.size();
+		return (this.lista.size()-1);
 	}
 	
 	//Te da las paginas web que contiene una palabra
@@ -139,7 +147,7 @@ public class WebOrriak {
 	}
 	
 	//Ordenar la lista con quicksort  ACABAR
-	public ArrayList<String> webOrdenatua(){
+	/*public ArrayList<String> webOrdenatua(){
 		ArrayList<String> e = new ArrayList<String>();
 		
 		this.quickSort(this.getUrlLista(), 0, this.lista.size());
@@ -149,41 +157,43 @@ public class WebOrriak {
 		return e;
 		
 		
-	}
+	}*/
 	
-	private void swap(ArrayList<String> lista,int ezker, int eskuin) {
+	private void swap(ArrayList<WebOrria> lista,int ezker, int eskuin) {
 		WebOrria w=this.lista.get(ezker);
 		this.lista.set(ezker,this.lista.get(eskuin));
 		this.lista.set(eskuin, w);
 	}
 	
-	private void quickSort(ArrayList<String> lista,int hasiera, int bukaera) {
+	public void quickSort(ArrayList<WebOrria> lista,int hasiera, int bukaera) {
 		if(bukaera-hasiera>0) {
-			int z = this.zatiketa(this.getUrlLista(),hasiera,bukaera);
-			this.quickSort(this.getUrlLista(),hasiera,z-1);
-			this.quickSort(this.getUrlLista(),z+1,bukaera);
-			
+			System.out.println("Hasiera: " +hasiera +" bukaera: "+ bukaera);
+			int z = this.zatiketa(this.lista,hasiera,bukaera);
+			this.quickSort(this.lista,hasiera,z-1);
+			this.quickSort(this.lista,z+1,bukaera);
+			System.out.println("Hasier: " +hasiera);
 		}
 	}
 	
-	private int zatiketa(ArrayList<String> lista,int i, int f) {
-		String lag=lista.get(i);
+	private int zatiketa(ArrayList<WebOrria> lista,int i, int f) {
+		String lag=lista.get(i).getUrl();
 		int ezker =i;
 		int eskuin=f;
 		
 		while(ezker<eskuin) {
-			while(lista.get(ezker).compareTo(lag)<=0 && ezker<eskuin) {
+			while(lista.get(ezker).getUrl().compareTo(lag)<=0 && ezker<eskuin) {
 				ezker++;
 			}
-			while(lista.get(eskuin).compareTo(lag)>0) {
+			while(lista.get(eskuin).getUrl().compareTo(lag)>0) {
 				eskuin--;
 			}
 			if(ezker<eskuin) {
 				this.swap(lista, ezker,eskuin);
 			}
+			System.out.println("Ezker: " + ezker + " Eskuin: " + eskuin);
 		}
 		lista.set(i, lista.get(eskuin));
-		lista.set(eskuin, lag);
+		lista.set(eskuin, this.getWebOrria(lag));
 		
 		return eskuin;
 	}
