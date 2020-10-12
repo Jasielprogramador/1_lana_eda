@@ -167,11 +167,11 @@ public class WebOrriak {
 	
 	public void quickSort(ArrayList<WebOrria> lista,int hasiera, int bukaera) {
 		if(bukaera-hasiera>0) {
-			System.out.println("Hasiera: " +hasiera +" bukaera: "+ bukaera);
+			
 			int z = this.zatiketa(this.lista,hasiera,bukaera);
 			this.quickSort(this.lista,hasiera,z-1);
 			this.quickSort(this.lista,z+1,bukaera);
-			System.out.println("Hasier: " +hasiera);
+
 		}
 	}
 	
@@ -190,7 +190,6 @@ public class WebOrriak {
 			if(ezker<eskuin) {
 				this.swap(lista, ezker,eskuin);
 			}
-			System.out.println("Ezker: " + ezker + " Eskuin: " + eskuin);
 		}
 		lista.set(i, lista.get(eskuin));
 		lista.set(eskuin, this.getWebOrria(lag));
@@ -209,9 +208,9 @@ public class WebOrriak {
 	//Para escribir la lista de urls en un txt
 	public void dokumentuaSortu() throws IOException {
         FileWriter writer = new FileWriter("url_lista.txt");
-        int size = this.getUrlLista().size();
+        int size = this.getLista().size();
         for (int i=0;i<size;i++) {
-            String str = this.getUrlLista().get(i);
+            String str = this.getLista().get(i).getUrl();
             writer.write(str);
             if(i < size-1)//This prevent creating a blank like at the end of the file**
                 writer.write("\n");
